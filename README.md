@@ -1,6 +1,6 @@
-Example Ergo setup.
+Docker based Ergo setup. Somewhat similar to [Ergo Bootstrap](https://github.com/ergoplatform/ergo-bootstrap) except it offers much less options and is not NixOS-based.
 
-It is somewhat similar to [Ergo Bootstrap](https://github.com/ergoplatform/ergo-bootstrap) except it offers much less options and is not NixOS-based.
+Install Docker and Docker Compose, then follow the instructions below for the components you'd like to run.
 
 ## Node
 

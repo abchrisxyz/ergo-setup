@@ -1,0 +1,93 @@
+version: "3.8"
+
+networks:
+  external: true
+  name: ergo-node
+
+networks:
+  default:
+    name: ergo-explorer
+
+volumes:
+  ergo_redis:
+    external: true
+
+services:
+  # Postgresql database
+  db:
+    build:
+      context: ./db
+      args:
+        EXPLORER_VERSION: 9.4.3
+    environment:
+      POSTGRES_DB: ergo
+      POSTGRES_USER: ergo
+    env_file:
+      # Defines POSTGRES_PASSWORD
+      - ./db/db.secret
+    volumes:
+      # Mapped volume for easier Postgres upgrades.
+      # Make sure the path exists or edit it here.
+      # See also readme_pg_upgrade.md
+      - /var/lib/explorer_pg/14/data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5433:5432"
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Redis
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    command: ["redis-server"]
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - ew_redis:/usr/local/etc/redis
+
+  # Explorer backend chain-grabber
+  grabber:
+    build:
+      context: ./explorer-backend-9.4.3
+      dockerfile: chain-grabber.Dockerfile
+    env_file:
+      # Defines POSTGRES_PASSWORD
+      - ./db/db.secret
+    volumes:
+      - ./explorer-backend.conf:/explorer-backend.conf:ro
+    networks:
+      - ergo-node
+    command: /explorer-backend.conf
+    links:
+      - "db"
+      - "redis"
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Explorer API
+  api:
+    build:
+      context: ./explorer-backend-9.4.3
+      dockerfile: explorer-api.Dockerfile
+    env_file:
+      # Defines POSTGRES_PASSWORD
+      - ./db/db.secret
+    volumes:
+      - ./explorer-backend.conf:/explorer-backend.conf:ro
+    command: /explorer-backend.conf
+    links:
+      - "db"
+      - "redis"
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:8080:8080
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"

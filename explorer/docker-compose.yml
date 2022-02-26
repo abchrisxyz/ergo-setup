@@ -1,12 +1,10 @@
 version: "3.8"
 
 networks:
-  external: true
-  name: ergo-node
-
-networks:
   default:
     name: ergo-explorer
+  ergo-node:
+    external: true
 
 volumes:
   ergo_redis:

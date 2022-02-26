@@ -10,13 +10,12 @@ curl -L https://github.com/ergoplatform/explorer-backend/archive/refs/tags/$EXPL
 echo "Extracting explorer source"
 rm -rf explorer-backend/$EXPLORER_VERSION
 tar -xf explorer-backend-$EXPLORER_VERSION.tar.gz
-mv explorer-backend-$EXPLORER_VERSION explorer-backend/$EXPLORER_VERSION
 rm explorer-backend-$EXPLORER_VERSION.tar.gz
 
 echo "Preparing grabber Dockerfile"
-cp explorer-backend/$EXPLORER_VERSION/modules/chain-grabber/Dockerfile explorer-backend/$EXPLORER_VERSION/chain-grabber.Dockerfile
+cp explorer-backend-$EXPLORER_VERSION/modules/chain-grabber/Dockerfile explorer-backend-$EXPLORER_VERSION/chain-grabber.Dockerfile
 
 echo "Preparing api Dockerfile"
-cp explorer-backend/$EXPLORER_VERSION/modules/explorer-api/Dockerfile explorer-backend/$EXPLORER_VERSION/explorer-api.Dockerfile
+cp explorer-backend-$EXPLORER_VERSION/modules/explorer-api/Dockerfile explorer-backend-$EXPLORER_VERSION/explorer-api.Dockerfile
 
 echo "Done."

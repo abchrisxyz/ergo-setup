@@ -44,7 +44,7 @@ services:
     ports:
       - "127.0.0.1:6379:6379"
     volumes:
-      - ew_redis:/usr/local/etc/redis
+      - ergo_redis:/usr/local/etc/redis
 
   # Explorer backend chain-grabber
   grabber:

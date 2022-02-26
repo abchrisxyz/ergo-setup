@@ -25,6 +25,8 @@ docker compose down
 
 Edit `build.sh` (or `build.bat` if using Windows) and set the `EXPLORER_VERSION` variable to the desired Explorer version. You can use any tag from the explorer repository: https://github.com/ergoplatform/explorer-backend.
 
+> If using another node than the one defined in this stack, edit the `master-nodes` field in  `explorer\explorer-backend.conf` to point it to your node.
+
 ```
 # Run the build script
 cd explorer

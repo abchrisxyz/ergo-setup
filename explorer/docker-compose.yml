@@ -57,11 +57,11 @@ services:
     volumes:
       - ./explorer-backend.conf:/explorer-backend.conf:ro
     networks:
+      - default
       - ergo-node
     command: /explorer-backend.conf
     links:
       - "db"
-      - "redis"
     restart: unless-stopped
     logging:
       options:

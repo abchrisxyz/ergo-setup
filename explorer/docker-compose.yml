@@ -31,7 +31,7 @@ services:
       # See also readme_pg_upgrade.md
       - /var/lib/explorer_pg/14/data:/var/lib/postgresql/data
     ports:
-      - "127.0.0.1:5433:5432"
+      - "5433:5432"
     restart: unless-stopped
     logging:
       options:

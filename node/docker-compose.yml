@@ -16,7 +16,7 @@ services:
     command: --mainnet -c /etc/ergo.conf
     volumes:
       - ergo_node:/home/ergo/.ergo
-      - ./node/ergo.conf:/etc/ergo.conf:ro
+      - ./ergo.conf:/etc/ergo.conf:ro
     ports:
       - "127.0.0.1:9053:9053"
       - "9030:9030"

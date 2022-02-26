@@ -84,7 +84,7 @@ services:
       - "redis"
     restart: unless-stopped
     ports:
-      - 127.0.0.1:8080:8080
+      - 8080:8080
     logging:
       options:
         max-size: "10m"

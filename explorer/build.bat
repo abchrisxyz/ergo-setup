@@ -9,7 +9,6 @@ curl -L https://github.com/ergoplatform/explorer-backend/archive/refs/tags/%EXPL
 echo Extracting explorer source
 del /S /Q explorer-backend\%EXPLORER_VERSION%
 tar -xf explorer-backend-%EXPLORER_VERSION%.tar.gz  || exit /b
-rem mv explorer-backend-%EXPLORER_VERSION% explorer-backend/%EXPLORER_VERSION%  || exit /b
 del /S /Q explorer-backend-%EXPLORER_VERSION%.tar.gz  || exit /b
 
 echo Preparing grabber Dockerfile

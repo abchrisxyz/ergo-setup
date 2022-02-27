@@ -32,6 +32,9 @@ Edit `build.sh` (or `build.bat` if using Windows) and set the `EXPLORER_VERSION`
 cd explorer
 ./build.sh
 
+# Choose a password for the database
+echo POSTGRES_PASSWORD=some-pw-you-can-choose > db/db.secret
+
 # Create a named volume for Redis
 docker volume create ergo-redis
 

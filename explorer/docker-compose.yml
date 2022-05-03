@@ -49,7 +49,7 @@ services:
   # Explorer backend chain-grabber
   grabber:
     build:
-      context: ./explorer-backend-9.12.3
+      context: ./explorer-backend-9.16.2
       dockerfile: chain-grabber.Dockerfile
     env_file:
       # Defines POSTGRES_PASSWORD
@@ -71,7 +71,7 @@ services:
   # Explorer API
   api:
     build:
-      context: ./explorer-backend-9.12.3
+      context: ./explorer-backend-9.16.2
       dockerfile: explorer-api.Dockerfile
     env_file:
       # Defines POSTGRES_PASSWORD

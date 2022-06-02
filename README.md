@@ -69,8 +69,13 @@ services:
 
 ### Initial sync
 
-Syncing from scratch will take a long time (weeks). Two solutions:
+~~Syncing from scratch will take a long time (weeks). Two solutions:~~
 
-1. Drop indexes and constraints from the database and restore them once initial sync is done.
-2. Get a snapshot from someone
+~~1. Drop indexes and constraints from the database and restore them once initial sync is done.~~
+~~2. Get a snapshot from someone~~
+
+Sync performance seems to have improved significantly. There have been several reports of full syncs in 48h or less. Still, if in a hurry, above points remain valid.
+
+
+
 

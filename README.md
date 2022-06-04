@@ -38,7 +38,7 @@ cd explorer
 echo POSTGRES_PASSWORD=some-pw-you-can-choose > db/db.secret
 
 # Create a named volume for Redis
-docker volume create ergo-redis
+docker volume create ergo_redis
 
 # Start all services in one go...
 docker compose up -d --build

@@ -16,7 +16,7 @@ services:
     build:
       context: ./db
       args:
-        EXPLORER_VERSION: 9.4.3
+        EXPLORER_VERSION: 9.16.4
     environment:
       POSTGRES_DB: ergo
       POSTGRES_USER: ergo

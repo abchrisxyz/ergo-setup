@@ -27,6 +27,8 @@ docker compose down
 
 Edit `build.sh` (or `build.bat` if using Windows) and set the `EXPLORER_VERSION` variable to the desired Explorer version. You can use any tag from the explorer repository: https://github.com/ergoplatform/explorer-backend.
 
+For the UI, edit the `API` arg in `docker-compose.yml` to point to the (external) URL of your api service.
+
 > If using another node than the one defined in this stack, edit the `master-nodes` field in  `explorer\explorer-backend.conf` to point it to your node.
 
 ```
@@ -47,6 +49,7 @@ docker compose up -d --build
 docker compose up --no-start
 docker compose start db grabber
 docker compose start api
+docker compose start ui
 ```
 
 ### Database volume

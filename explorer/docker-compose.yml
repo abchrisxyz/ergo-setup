@@ -89,3 +89,16 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  # Explorer UI
+  ui:
+    build:
+      context: ./ui
+      args:
+        # Set this to the url the api should be accessed at
+        API: 192.168.1.72:8080
+    links:
+      - "api"
+    ports:
+      - 3000:3000
+    

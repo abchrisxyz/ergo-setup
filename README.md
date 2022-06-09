@@ -46,10 +46,19 @@ docker volume create ergo_redis
 docker compose up -d --build
 
 # ...or only the ones you need
+docker compose build db grabber api
 docker compose up --no-start
 docker compose start db grabber
 docker compose start api
-docker compose start ui
+
+# Check their status
+docker ps --filter name=explorer -a
+
+# Stop all explorer services
+docker compose down
+# ...or
+docker compose stop api grabber
+docker compose stop db
 ```
 
 ### Database volume

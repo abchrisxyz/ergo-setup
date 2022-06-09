@@ -12,10 +12,10 @@ rm -rf explorer-backend/$EXPLORER_VERSION
 tar -xf explorer-backend-$EXPLORER_VERSION.tar.gz
 rm explorer-backend-$EXPLORER_VERSION.tar.gz
 
-echo "Preparing grabber Dockerfile"
+echo "Preparing Dockerfiles"
 cp explorer-backend-$EXPLORER_VERSION/modules/chain-grabber/Dockerfile explorer-backend-$EXPLORER_VERSION/chain-grabber.Dockerfile
-
-echo "Preparing api Dockerfile"
 cp explorer-backend-$EXPLORER_VERSION/modules/explorer-api/Dockerfile explorer-backend-$EXPLORER_VERSION/explorer-api.Dockerfile
+cp explorer-backend-$EXPLORER_VERSION/modules/utx-broadcaster/Dockerfile explorer-backend-$EXPLORER_VERSION/utx-broadcaster.Dockerfile
+cp explorer-backend-$EXPLORER_VERSION/modules/utx-tracker/Dockerfile explorer-backend-$EXPLORER_VERSION/utx-tracker.Dockerfile
 
 echo "Done."

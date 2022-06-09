@@ -68,6 +68,47 @@ services:
         max-size: "10m"
         max-file: "3"
 
+  # Mempool tracker
+  utx-tracker:
+    build:
+      context: ./explorer-backend-9.16.4
+      dockerfile: utx-tracker.Dockerfile
+    env_file:
+      # Defines POSTGRES_PASSWORD
+      - ./db/db.secret
+    volumes:
+      - ./explorer-backend.conf:/explorer-backend.conf:ro
+    networks:
+      - default
+      - ergo-node
+    command: /explorer-backend.conf
+    links:
+      - "db"
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Mempool broadcaster
+  utx-broadcaster:
+    build:
+      context: ./explorer-backend-9.16.4
+      dockerfile: utx-broadcaster.Dockerfile
+    volumes:
+      - ./explorer-backend.conf:/explorer-backend.conf:ro
+    networks:
+      - default
+      - ergo-node
+    command: /explorer-backend.conf
+    links:
+      - "redis"
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
   # Explorer API
   api:
     build:

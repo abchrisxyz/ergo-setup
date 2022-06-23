@@ -145,4 +145,41 @@ services:
       - "api"
     ports:
       - 3000:3000
-    
+  
+  # GraphQL
+  graphql:
+    build:
+      context: ./graphql
+      args:
+        VERSION: "0.1.0"
+    environment:
+      # database host address    
+      DB_HOST: db                     
+      # database host port      
+      DB_PORT: 5432                   
+      # database name      
+      DB_NAME: ergo                   
+      # database user name      
+      DB_USER_NAME: ergo              
+      # ergo node address and port
+      ERGO_NODE_ADDRESS: node:9053    
+      # optional: MAINNET or TESTNET      
+      NETWORK: MAINNET                
+      # optional: redis host address
+      REDIS_HOST: redis               
+      # optional: redis host port      
+      REDIS_PORT: 6379                
+      # optional: redis username      
+      # REDIS_USER_NAME:                
+      # optional: redis user password      
+      # REDIS_USER_PWD:                 
+      # optional: maximum query depth
+      MAX_QUERY_DEPTH: 5              
+    env_file:
+      # Defines DB_USER_PWD
+      - ./db/db.secret
+    links:
+      - "db"
+      - "redis"
+    ports:
+      - 3001:3000

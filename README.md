@@ -63,6 +63,10 @@ docker compose stop api grabber
 docker compose stop db
 ```
 
+### GraphQL
+
+The graphql server will run over http on port 3001. To use it with clients requiring https, put it behind a reverse proxy.
+
 ### Database volume
 
 Unlike the node, the database volume is mapped, not named. Mapped volumes make it easier to handle  Postresql upgrades.

@@ -100,11 +100,11 @@ docker exec -it explorer-db-1 pg_dump -Fc -v --schema=public --file /var/lib/pos
 ```
 This will use the pg_dump present within the db container and save the dump to the mapped db volume. Note the `Fc` flag which outputs the dump in custom format resulting in smaller dump size and faster processing.
 
-To restore, the db needs to be empty but with the schema loaded. Create a fresh db container by starting the db service only at first, no grabber, no utx-tracker.
+To restore, start the db service only at first, no grabber, no utx-tracker.
 Copy the dump file to the mapped db volume so that the db container can see it. Then run:
 
 ```
-docker exec -it explorer-db-1 pg_restore -v --dbname=test --username=ergo --data-only --disable-triggers /var/lib/postgresql/data/explorer.dmp
+docker exec -it explorer-db-1 pg_restore -v --clean --create --dbname=postgres --username=ergo /var/lib/postgresql/data/explorer.dmp
 ```
 This will use the pg_restore present in the db container and read the dump from the mapped volume.
 

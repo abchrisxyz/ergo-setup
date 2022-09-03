@@ -162,7 +162,7 @@ services:
       # database user name      
       DB_USER_NAME: ergo              
       # ergo node address and port
-      ERGO_NODE_ADDRESS: node:9053    
+      ERGO_NODE_ADDRESS: http://node:9053    
       # optional: MAINNET or TESTNET      
       NETWORK: MAINNET                
       # optional: redis host address

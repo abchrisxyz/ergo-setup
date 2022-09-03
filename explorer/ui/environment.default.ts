@@ -10,10 +10,6 @@ export const environmentDefault: IEnvironment = {
     },
     defaultLocale: 'en',
     environments: [
-        // {
-        //   name: 'Testnet',
-        //   url: 'http://localhost:3000',
-        // },
         {
             name: 'Mainnet',
             url: 'http://localhost',

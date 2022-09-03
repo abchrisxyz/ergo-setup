@@ -10,8 +10,6 @@ COPY environment.default.ts /app/src/config/
 COPY environment.prod.ts /app/src/config/
 RUN sed -i "s/https/http/g" /app/src/services/issuedToken.api.service.ts
 RUN sed -i "s/api.ergoplatform.com/${API}/g" /app/src/services/issuedToken.api.service.ts
-# RUN sed -i "s/https/http/g" /app/src/components/navbar-menu/navbar-menu.component.tsx
-# RUN sed -i "s/api.ergoplatform.com/${API}/g" /app/src/components/navbar-menu/navbar-menu.component.tsx
 RUN sed -i "s/localhost/${API}/g" /app/src/config/environment.default.ts
 RUN sed -i "s/localhost/${API}/g" /app/src/config/environment.prod.ts
 # Build

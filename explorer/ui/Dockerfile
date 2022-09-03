@@ -4,14 +4,18 @@ RUN curl -L https://github.com/ergoplatform/explorer-frontend/archive/refs/heads
     tar -xf /tmp/src.tar.gz  -C /tmp && \
     mv /tmp/explorer-frontend-master /app
 WORKDIR /app
-# Overwrite configs and urls
 ARG API
+ARG LABEL
 COPY environment.default.ts /app/src/config/
 COPY environment.prod.ts /app/src/config/
-RUN sed -i "s/https/http/g" /app/src/services/issuedToken.api.service.ts
-RUN sed -i "s/api.ergoplatform.com/${API}/g" /app/src/services/issuedToken.api.service.ts
-RUN sed -i "s/localhost/${API}/g" /app/src/config/environment.default.ts
-RUN sed -i "s/localhost/${API}/g" /app/src/config/environment.prod.ts
+# Set configured api in config templates
+RUN sed -i "s|_api_|${API}|g" /app/src/config/environment.default.ts && \
+    sed -i "s|_api_|${API}|g" /app/src/config/environment.prod.ts && \
+    # Set configured network name in config templates   
+    sed -i "s|_name_|${LABEL}|g" /app/src/config/environment.default.ts && \
+    sed -i "s|_name_|${LABEL}|g" /app/src/config/environment.prod.ts && \
+    # Overwrite hard coded api url in ui source
+    sed -i "s|https://api.ergoplatform.com|${API}|g" /app/src/services/issuedToken.api.service.ts
 # Build
 RUN npm i --location=global corepack && \
     yarn && \

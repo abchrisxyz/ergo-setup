@@ -3,8 +3,8 @@ import { IEnvironment } from './environment';
 export const environmentProd: IEnvironment = {
     environments: [
         {
-            name: 'Mainnet',
-            url: 'http://localhost',
+            name: '_name_',
+            url: '_api_',
         },
     ],
     isLoggerEnabled: false,

@@ -3,16 +3,16 @@ import { IEnvironment } from './environment';
 export const environmentDefault: IEnvironment = {
     alternativeLogo: true,
     // TODO: apiUrl is deprecated. Use apiBaseUrl instead.
-    apiUrl: 'http://localhost/api/v0',
-    apiBaseUrl: 'http://localhost',
+    apiUrl: '_api_/api/v0',
+    apiBaseUrl: '_api_',
     blockchain: {
         coinName: 'Erg',
     },
     defaultLocale: 'en',
     environments: [
         {
-            name: 'Mainnet',
-            url: 'http://localhost',
+            name: '_name_',
+            url: '_api_',
         },
     ],
     isLoggerEnabled: true,

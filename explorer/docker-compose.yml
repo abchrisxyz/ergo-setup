@@ -139,8 +139,10 @@ services:
     build:
       context: ./ui
       args:
-        # Set this to the url the api should be accessed at
-        API: 192.168.1.72:8080
+        # Set this to the url the api should be accessed at: http(s)://<your-ip-or-domain>:8080
+        API: http://localhost:8080
+        # Name of the network (mainnet, testnet, devnet, ...)
+        LABEL: "Mainnet"
     links:
       - "api"
     ports:

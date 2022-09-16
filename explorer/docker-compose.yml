@@ -16,7 +16,7 @@ services:
     build:
       context: ./db
       args:
-        EXPLORER_VERSION: 9.16.6
+        EXPLORER_VERSION: 9.17.2-M1
     # -- Uncomment and edit if wanting to set custom work_mem value
     # -- https://www.postgresql.org/docs/current/runtime-config-resource.html
     # command: ["postgres", "-c", "work_mem=4MB"]
@@ -52,7 +52,7 @@ services:
   # Explorer backend chain-grabber
   grabber:
     build:
-      context: ./explorer-backend-9.16.6
+      context: ./explorer-backend-9.17.2-M1
       dockerfile: chain-grabber.Dockerfile
     env_file:
       # Defines POSTGRES_PASSWORD
@@ -74,7 +74,7 @@ services:
   # Mempool tracker
   utx-tracker:
     build:
-      context: ./explorer-backend-9.16.6
+      context: ./explorer-backend-9.17.2-M1
       dockerfile: utx-tracker.Dockerfile
     env_file:
       # Defines POSTGRES_PASSWORD
@@ -96,7 +96,7 @@ services:
   # Mempool broadcaster
   utx-broadcaster:
     build:
-      context: ./explorer-backend-9.16.6
+      context: ./explorer-backend-9.17.2-M1
       dockerfile: utx-broadcaster.Dockerfile
     volumes:
       - ./explorer-backend.conf:/explorer-backend.conf:ro
@@ -115,7 +115,7 @@ services:
   # Explorer API
   api:
     build:
-      context: ./explorer-backend-9.16.6
+      context: ./explorer-backend-9.17.2-M1
       dockerfile: explorer-api.Dockerfile
     env_file:
       # Defines POSTGRES_PASSWORD

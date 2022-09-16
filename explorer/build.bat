@@ -1,6 +1,6 @@
 @echo off
 
-set EXPLORER_VERSION=9.16.6
+set EXPLORER_VERSION=9.17.2-M1
 
 
 echo Fetching explorer %EXPLORER_VERSION% source

@@ -48,6 +48,7 @@ services:
       - "127.0.0.1:6379:6379"
     volumes:
       - ergo_redis:/usr/local/etc/redis
+    restart: unless-stopped
 
   # Explorer backend chain-grabber
   grabber:
@@ -147,6 +148,7 @@ services:
       - "api"
     ports:
       - 3000:3000
+    restart: unless-stopped
   
   # GraphQL
   graphql:
@@ -185,3 +187,4 @@ services:
       - "redis"
     ports:
       - 3001:3000
+    restart: unless-stopped

@@ -13,9 +13,7 @@ RUN sed -i "s|_api_|${API}|g" /app/src/config/environment.default.ts && \
     sed -i "s|_api_|${API}|g" /app/src/config/environment.prod.ts && \
     # Set configured network name in config templates   
     sed -i "s|_name_|${LABEL}|g" /app/src/config/environment.default.ts && \
-    sed -i "s|_name_|${LABEL}|g" /app/src/config/environment.prod.ts && \
-    # Overwrite hard coded api url in ui source
-    sed -i "s|https://api.ergoplatform.com|${API}|g" /app/src/services/issuedToken.api.service.ts
+    sed -i "s|_name_|${LABEL}|g" /app/src/config/environment.prod.ts
 # Build
 RUN npm i --location=global corepack && \
     yarn && \

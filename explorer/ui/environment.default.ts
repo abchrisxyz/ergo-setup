@@ -1,7 +1,7 @@
 import { IEnvironment } from './environment';
 
 export const environmentDefault: IEnvironment = {
-    alternativeLogo: true,
+    alternativeLogo: false,
     // TODO: apiUrl is deprecated. Use apiBaseUrl instead.
     apiUrl: '_api_/api/v0',
     apiBaseUrl: '_api_',

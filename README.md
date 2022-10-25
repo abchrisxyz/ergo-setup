@@ -9,7 +9,7 @@ Install [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](h
 
 ```
 # Volume and network expected by node compose file.
-docker volume create ergo-node
+docker volume create ergo_node
 docker network create ergo-node
 
 # Starting the service

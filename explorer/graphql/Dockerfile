@@ -1,6 +1,6 @@
 FROM node:16-alpine as build
 # Default version
-ARG VERSION="0.4.1"
+ARG VERSION="0.4.2"
 # RUN apk update && apk upgrade && apk add --no-cache curl python3 make g++
 RUN apk update && apk upgrade && apk add --no-cache curl
 RUN curl -L https://github.com/capt-nemo429/ergo-graphql/archive/refs/tags/v$VERSION.tar.gz > /tmp/src.tar.gz && \

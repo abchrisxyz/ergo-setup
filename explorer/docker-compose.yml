@@ -16,7 +16,7 @@ services:
     build:
       context: ./db
       args:
-        EXPLORER_VERSION: 9.17.2-M1
+        EXPLORER_VERSION: 9.17.4
     # -- Uncomment and edit if wanting to set custom work_mem value
     # -- https://www.postgresql.org/docs/current/runtime-config-resource.html
     # command: ["postgres", "-c", "work_mem=4MB"]
@@ -50,10 +50,19 @@ services:
       - ergo_redis:/usr/local/etc/redis
     restart: unless-stopped
 
+  # Redis request cache
+  redis_rc:
+    image: redis:latest
+    restart: unless-stopped
+    command: ["redis-server"]
+    expose:
+      - "6379"
+    restart: unless-stopped
+
   # Explorer backend chain-grabber
   grabber:
     build:
-      context: ./explorer-backend-9.17.2-M1
+      context: ./explorer-backend-9.17.4
       dockerfile: chain-grabber.Dockerfile
     env_file:
       # Defines POSTGRES_PASSWORD
@@ -66,6 +75,7 @@ services:
     command: /explorer-backend.conf
     links:
       - "db"
+      - "redis_rc"
     restart: unless-stopped
     logging:
       options:
@@ -75,7 +85,7 @@ services:
   # Mempool tracker
   utx-tracker:
     build:
-      context: ./explorer-backend-9.17.2-M1
+      context: ./explorer-backend-9.17.4
       dockerfile: utx-tracker.Dockerfile
     env_file:
       # Defines POSTGRES_PASSWORD
@@ -97,7 +107,7 @@ services:
   # Mempool broadcaster
   utx-broadcaster:
     build:
-      context: ./explorer-backend-9.17.2-M1
+      context: ./explorer-backend-9.17.4
       dockerfile: utx-broadcaster.Dockerfile
     volumes:
       - ./explorer-backend.conf:/explorer-backend.conf:ro
@@ -116,7 +126,7 @@ services:
   # Explorer API
   api:
     build:
-      context: ./explorer-backend-9.17.2-M1
+      context: ./explorer-backend-9.17.4
       dockerfile: explorer-api.Dockerfile
     env_file:
       # Defines POSTGRES_PASSWORD

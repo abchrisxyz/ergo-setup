@@ -14,12 +14,12 @@ docker network create ergo-node
 
 # Starting the service
 cd node
-docker compose up -d
+docker-compose up -d
 
 # Stopping the service (still from within the node directory)
 # Using stop before/instead of down seems to cause less db corruption issues
-docker compose stop node
-docker compose down
+docker-compose stop node
+docker-compose down
 ```
 
 ## Explorer
@@ -42,22 +42,22 @@ echo DB_USER_PWD=some-pw-you-can-choose >> db/db.secret
 docker volume create ergo_redis
 
 # Start all services in one go...
-docker compose up -d --build
+docker-compose up -d --build
 
 # ...or only the ones you need
-docker compose build db grabber api
-docker compose up --no-start
-docker compose start db grabber
-docker compose start api
+docker-compose build db grabber api
+docker-compose up --no-start
+docker-compose start db grabber
+docker-compose start api
 
 # Check their status
 docker ps --filter name=explorer -a
 
 # Stop all explorer services
-docker compose down
+docker-compose down
 # ...or
-docker compose stop api grabber
-docker compose stop db
+docker-compose stop api grabber
+docker-compose stop db
 ```
 
 ### UI

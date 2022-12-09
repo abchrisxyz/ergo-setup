@@ -38,6 +38,9 @@ cd explorer
 ./build.sh
 
 # Choose a password for the database
+# Do this *before* starting the db service for the first time.
+# If wanting to change the db password later, change it through a db client,
+# then update it in db/db.secret.
 echo POSTGRES_PASSWORD=some-pw-you-can-choose > db/db.secret
 # Same password but different env variable for the GraphQL service
 echo DB_USER_PWD=some-pw-you-can-choose >> db/db.secret

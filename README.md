@@ -2,6 +2,8 @@ Docker based Ergo setup. Somewhat similar to [Ergo Bootstrap](https://github.com
 
 Install [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/), then follow the instructions below for the components you'd like to run.
 
+> The `docker compose` command used in the docs below may have to be replaced by `docker-compose` on some systems (e.g. Ubuntu 20 and lower).
+
 > Containers are configured to expose certain ports for convenient access within a home lab context. Modify the `ports` values in the `docker-compose.yml` files if needed.
 
 

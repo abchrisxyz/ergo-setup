@@ -165,7 +165,7 @@ services:
     build:
       context: ./graphql
       args:
-        VERSION: "0.4.2"
+        VERSION: "0.4.3"
     environment:
       # database host address    
       DB_HOST: db                     
